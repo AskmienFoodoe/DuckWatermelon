@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Button, Row, Col, Image, Jumbotron} from "react-bootstrap";
+
 class Game extends React.Component {
 
     dif = 'medium';
@@ -72,20 +74,46 @@ class Game extends React.Component {
     render() {
         
         return (
-            <div>
-                <div>
-                    <img width="600px" height="400px" src={this.state.image} />
-                    <h2>Time:{this.state.timer.toFixed(2)}</h2>
-                </div>
-                <div>
-                    <button onClick={this.onDuckClick}>Duck</button>
-                    <button onClick={this.onMelonClick}>Watermelon</button>
-                </div>
-                <div>Score:{this.state.score}</div>
-                <div>Misses:{this.state.misses}</div>
-                <div>Time:{this.state.time}</div>
-                
-            </div>
+            <Jumbotron>
+                <Row className = "justify-content-md-center" style={{marginBottom:"20px"}}>
+                    <h1>Time:  {this.state.timer.toFixed(2)}</h1>
+                </Row>
+                <Row  className = "justify-content-md-center" style = {{marginBottom:"20px"}}>
+                    <Image src={this.state.image} style={{height:"500px", border:"12px solid #F3969A"}} fluid />
+                </Row>
+                <Row>
+                    <Col>
+                        <Button onClick={this.onDuckClick} size = "lg" className="btn btn-warning" block>Duck</Button>
+                    </Col>
+                    <Col>
+                        <Button onClick={this.onMelonClick} size = "lg" block>Watermelon</Button>
+                    </Col>
+                </Row>
+                <Row  style = {{marginTop:"20px"}}>
+                    <Col style = {{textAlign:"right"}}>
+                        <h2 >Score: </h2>
+                    </Col>
+                    <Col style = {{textAlign:"left"}}>
+                        <h2>{this.state.score}</h2>
+                    </Col>
+                </Row>
+                <Row  style = {{marginTop:"20px"}}>
+                    <Col style = {{textAlign:"right"}}>
+                        <h2 >Misses: </h2>
+                    </Col>
+                    <Col style = {{textAlign:"left"}}>
+                        <h2>{this.state.misses}</h2>
+                    </Col>
+                </Row>
+                <Row  style = {{marginTop:"20px"}}>
+                    <Col style = {{textAlign:"right"}}>
+                        <h2 >Time: </h2>
+                    </Col>
+                    <Col style = {{textAlign:"left"}}>
+                        <h2>{this.state.time}</h2>
+                    </Col>
+                </Row>
+            </Jumbotron>
         );
     }
 }

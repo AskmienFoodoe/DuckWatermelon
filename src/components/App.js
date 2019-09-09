@@ -4,13 +4,15 @@ import {BrowserRouter, Route, Link} from 'react-router-dom'
 import StartPage from './StartPage';
 import Game from './Game';
 
-const App = () => {
+import {Container} from "react-bootstrap"
+
+const App = () => { 
   return (
     <BrowserRouter>
-    <div>
-        <Route path="/" exact component={StartPage} />
-        <Route path="/game" exact component={Game} />
-    </div>
+      <Container style = {{ marginTop: "90px"}}>
+          <Route path="/" exact component={StartPage} />
+          <Route path="/game" exact component={Game} />
+      </Container>
     </BrowserRouter>
   );
 }
