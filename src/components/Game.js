@@ -57,10 +57,7 @@ class Game extends React.Component {
         this.setState({image: this.getRandomImage()});
 
         setInterval(() => {
-            this.setState({time: this.state.time + 1})
-        }, 1000)
-        setInterval(() => {
-            this.setState({timer: this.state.timer - 0.01})
+            this.setState({time: this.state.time + 0.01, timer: this.state.timer - 0.01})
         }, 10)
     };
 
@@ -76,7 +73,16 @@ class Game extends React.Component {
         return (
             <Jumbotron>
                 <Row className = "justify-content-md-center" style={{marginBottom:"20px"}}>
-                    <h1>Time:  {this.state.timer.toFixed(2)}</h1>
+                    <Col style={{textAlign:"right"}}>
+                    <h1><strong>Time:</strong></h1>
+                    </Col>
+                    <Col>
+                        <h1 style = {{color: `#${Math.floor((this.difficulty[this.dif]-this.state.timer)*255/this.difficulty[this.dif]).toString(16)}0000`}}>
+                        <strong>{` ${this.state.timer.toFixed(2)}`}</strong>
+                        </h1>
+                    </Col>
+                        
+                    
                 </Row>
                 <Row  className = "justify-content-center" style = {{marginBottom:"20px"}}>
                     <Image src={this.state.image} style={{height: 2*window.innerHeight/5, border:"12px solid #F3969A"}} fluid />
@@ -110,7 +116,7 @@ class Game extends React.Component {
                         <h2 >Time: </h2>
                     </Col>
                     <Col style = {{textAlign:"left"}}>
-                        <h2>{this.state.time}</h2>
+                        <h2>{this.state.time.toFixed(0)}</h2>
                     </Col>
                 </Row>
             </Jumbotron>
