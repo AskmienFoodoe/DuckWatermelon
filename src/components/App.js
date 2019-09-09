@@ -6,15 +6,22 @@ import Game from './Game';
 
 import {Container} from "react-bootstrap"
 
-const App = () => { 
-  return (
-    <BrowserRouter>
-      <Container style = {{ marginTop: "90px"}}>
-          <Route path="/" exact component={StartPage} />
-          <Route path="/game" exact component={Game} />
-      </Container>
-    </BrowserRouter>
-  );
+class App extends React.Component { 
+  
+  componentDidMount(){
+
+  }
+  
+  render(){
+    return (
+      <BrowserRouter>
+        <Container style = {{ marginTop: "90px"}}>
+            <Route path="/" exact component={StartPage} />
+            <Route path="/game" exact component={Game} />
+        </Container>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

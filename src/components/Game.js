@@ -79,7 +79,7 @@ class Game extends React.Component {
                     <h1>Time:  {this.state.timer.toFixed(2)}</h1>
                 </Row>
                 <Row  className = "justify-content-md-center" style = {{marginBottom:"20px"}}>
-                    <Image src={this.state.image} style={{height:"500px", border:"12px solid #F3969A"}} fluid />
+                    <Image src={this.state.image} style={{height: 2*window.innerHeight/5, border:"12px solid #F3969A"}} fluid />
                 </Row>
                 <Row>
                     <Col>
