@@ -78,7 +78,7 @@ class Game extends React.Component {
                 <Row className = "justify-content-md-center" style={{marginBottom:"20px"}}>
                     <h1>Time:  {this.state.timer.toFixed(2)}</h1>
                 </Row>
-                <Row  className = "justify-content-md-center" style = {{marginBottom:"20px"}}>
+                <Row  className = "justify-content-center" style = {{marginBottom:"20px"}}>
                     <Image src={this.state.image} style={{height: 2*window.innerHeight/5, border:"12px solid #F3969A"}} fluid />
                 </Row>
                 <Row>
