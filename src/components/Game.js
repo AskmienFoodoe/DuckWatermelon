@@ -4,13 +4,14 @@ import {Button, Row, Col, Image, Jumbotron} from "react-bootstrap";
 
 class Game extends React.Component {
 
-    dif = 'medium';
+    dif = this.props.diff;
+    timerID;
 
     difficulty = {
-        'easy': 3,
-        'medium': 1.5,
-        'hard': 0.8,
-        'wumpus': 0.5
+        'Easy': 3.0,
+        'Medium': 1.5,
+        'Hard': 0.8,
+        'Wumpus': 0.5
     }
 
     state = 
@@ -56,7 +57,7 @@ class Game extends React.Component {
     componentDidMount = () => {
         this.setState({image: this.getRandomImage()});
 
-        setInterval(() => {
+        this.timerID = setInterval(() => {
             this.setState({time: this.state.time + 0.01, timer: this.state.timer - 0.01})
         }, 10)
     };
@@ -66,6 +67,11 @@ class Game extends React.Component {
             this.setState({misses: this.state.misses+1});
             this.nextImage();
         }
+        
+    }
+
+    componentWillUnmount = () => {
+        clearInterval(this.timerID);
     }
 
     render() {
@@ -77,7 +83,7 @@ class Game extends React.Component {
                     <h1><strong>Time:</strong></h1>
                     </Col>
                     <Col>
-                        <h1 style = {{color: `#${Math.floor((this.difficulty[this.dif]-this.state.timer)*255/this.difficulty[this.dif]).toString(16)}0000`}}>
+                        <h1 style = {{color: `#${Math.floor((this.difficulty[this.dif]-this.state.timer)*255/this.difficulty[this.dif]).toString(16).padStart(2,'0')}0000`}}>
                         <strong>{` ${this.state.timer.toFixed(2)}`}</strong>
                         </h1>
                     </Col>
