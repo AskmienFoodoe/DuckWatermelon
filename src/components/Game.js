@@ -27,7 +27,7 @@ class Game extends React.Component {
 
     state = 
         {time: 0, 
-        timer: 0, 
+        timer: this.difficulty[this.dif], 
         score: 0, 
         misses: 0, 
         image: '', 
@@ -146,10 +146,10 @@ class Game extends React.Component {
                     </Row>
                     <Row  style = {{marginTop:"20px"}}>
                         <Col style = {{textAlign:"right"}}>
-                            <h2>Misses: </h2>
+                            <h2>Lives: </h2>
                         </Col>
                         <Col style = {{textAlign:"left"}}>
-                            <h2>{this.state.misses}</h2>
+                            {Array(5-this.state.misses).fill(<i class="heart icon big red"></i>)}
                         </Col>
                     </Row>
                     <Row  style = {{marginTop:"20px"}}>
