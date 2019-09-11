@@ -48,7 +48,7 @@ class Game extends React.Component {
         if(!this.state.gameOver){
             const imgType = Math.floor(Math.random() * 2) + 1;
             this.setState({type: imgType});
-            const n = Math.floor(Math.random() * 10) + 1;
+            const n = Math.floor(Math.random() * 50) + 1;
             return `${process.env.PUBLIC_URL}/${imgType}_${n}.jpg`;  
         }
     }
