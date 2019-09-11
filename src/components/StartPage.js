@@ -21,7 +21,7 @@ class StartPage extends React.Component {
     render = () => {
         return (
             <div>
-                <Jumbotron >
+                <Jumbotron>
                     <Row className = "justify-content-md-center" >
                         <h1 > <strong>DUCKS AND WATERMELONS </strong></h1>
                     </Row>
