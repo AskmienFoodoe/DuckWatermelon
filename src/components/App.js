@@ -9,19 +9,19 @@ import {Container} from "react-bootstrap"
 
 class App extends React.Component { 
   
-  state = {diff: ''};
+  state = {diff: '', name: ''};
 
 
-  getDiff = (d) => {
-    this.setState({diff: d});
+  getProps = (d, n) => {
+    this.setState({diff: d, name: n});
   }
   
   render(){
     return (
       <BrowserRouter>
         <Container style = {{ marginTop: "90px"}}>
-            <Route path="/" exact render={(props) => <StartPage handleDiff = {this.getDiff} />} />
-            <Route path="/game" render={(props) => <Game diff = {this.state.diff}/>} />
+            <Route path="/" exact render={(props) => <StartPage handleProps = {this.getProps} />} />
+            <Route path="/game" render={(props) => <Game diff = {this.state.diff} name = {this.state.name}/>} />
             <Route path = "/results" component = {ResultsPage} />
         </Container>
       </BrowserRouter>

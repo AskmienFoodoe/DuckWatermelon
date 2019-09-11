@@ -13,7 +13,9 @@ const api = axios.create({
 
 class Game extends React.Component {
 
+
     dif = this.props.diff;
+    name = this.props.name==='' ? 'Player' : this.props.name;    
     timerID;
 
     difficulty = {
@@ -34,7 +36,7 @@ class Game extends React.Component {
     
     postScore = async () =>{
         api.post("/scores",{
-            "name": "Steve",
+            "name": this.name,
             "diff": this.dif,
             "score": this.state.score
         })
@@ -164,12 +166,18 @@ class Game extends React.Component {
 
             return (
                 <Jumbotron>
-                    <Row>
-                        <h1>GAME OVER!</h1>
+                    <Row className="justify-content-md-center" style={{marginTop: "15px", marginBottom: "50px"}}>
+                        <h1><strong>GAME OVER!</strong></h1>
                     </Row>
-                    <Row>
-                        <h2>Your Final Score Was: {this.state.score}</h2>
+
+                    <Row className="justify-content-md-center" style={{marginBottom: "30px"}}>
+                        <h2>Your Final Score Was:</h2>
                     </Row>
+
+                    <Row className="justify-content-md-center" style={{marginBottom: "50px"}}>
+                        <h1 style={{fontSize: "144px"}}><strong>{this.state.score}</strong></h1>
+                    </Row>
+
                     <Row>
                         <Col>
                             <Link to="/">
@@ -192,5 +200,7 @@ class Game extends React.Component {
         
     }
 }
+
+
 
 export default Game;

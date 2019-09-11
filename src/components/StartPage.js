@@ -6,16 +6,22 @@ import {Button, Row, Col, Image, Jumbotron, Form} from "react-bootstrap";
 
 class StartPage extends React.Component {
 
-    state = {diff: 'Easy'};
+    state = {diff: 'Easy', name: ''};
+
+    onInputChange = (event) => {
+        
+        this.setState({name: event.target.value}, () => {this.props.handleProps(this.state.diff, this.state.name)});
+        
+    }
 
     onSelectChange = (event) => {
         
-        this.setState({diff: event.target.value}, () => {this.props.handleDiff(this.state.diff)});
+        this.setState({diff: event.target.value}, () => {this.props.handleProps(this.state.diff, this.state.name)});
         
     }
 
     componentDidMount = () => {
-        this.props.handleDiff(this.state.diff)
+        this.props.handleProps(this.state.diff, this.state.name);
     }
 
     render = () => {
@@ -30,14 +36,22 @@ class StartPage extends React.Component {
                         <h3 style={{textAlign: "center"}}>If you see a duck, click on "Duck"! If you see a watermelon, click on "Watermelon"! Try not to let time run out!</h3>
                     </Row>
     
-                    <Row style = {{marginTop:"40px", marginLeft:"450px", marginRight:"450px"}} className = "justify-content-md-center">
-                        <label>Difficulty</label>
-                        <Form.Control as="select" value={this.state.diff} onChange={this.onSelectChange}>
-                            <option>Easy</option>
-                            <option>Medium</option>
-                            <option>Hard</option>
-                            <option>Wumpus</option>
-                        </Form.Control>
+                    
+
+                    <Row style = {{marginTop:"40px", marginLeft:"150px", marginRight:"150px"}} className = "justify-content-md-center">
+                        <Col>
+                            <label>Name</label>
+                            <Form.Control value={this.state.name} placeholder="Enter Your Name!" onChange={this.onInputChange} />  
+                        </Col>
+                        <Col>
+                            <label>Difficulty</label>
+                            <Form.Control as="select" value={this.state.diff} onChange={this.onSelectChange}>
+                                <option>Easy</option>
+                                <option>Medium</option>
+                                <option>Hard</option>
+                                <option>Wumpus</option>
+                            </Form.Control>
+                        </Col>
                     </Row>
             
                     <Row style = {{marginTop:"40px", marginLeft:"300px", marginRight:"300px"}}  className = "justify-content-md-center">
